@@ -39,7 +39,7 @@ def main(config_path):
     )
 
     path_to_model_dir = os.path.join(
-        config["data"]["local_dir"],
+        config["data"]["data_dir"],
         config["data"]["model_dir"])
     create_directories([path_to_model_dir])
     path_to_model = os.path.join(
