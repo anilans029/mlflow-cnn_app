@@ -3,5 +3,7 @@ mlflow
 pandas
 numpy
 PyYAML
+pillow
+tensorflow
 
 -e .
