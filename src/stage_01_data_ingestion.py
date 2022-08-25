@@ -1,6 +1,7 @@
 import argparse
 import urllib.request as req
 from venv import create
+from src.utils.data_management import validate_image
 from src.utils.utils import read_yaml,create_directories, unzip_file
 import os
 from src.logger import logging
@@ -35,7 +36,7 @@ def main(config):
     else:
         logging.info(f"data already extracted at {extracted_data_dir}")
     
-    
+    validate_image(config_file=config_file)    
 
 if __name__ =="__main__":
     args = argparse.ArgumentParser()
