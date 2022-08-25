@@ -1,4 +1,5 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+from typing import List
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
@@ -7,8 +8,17 @@ with open("README.md", "r", encoding="utf-8") as f:
 REPO_NAME = " "
 AUTHOR_USER_NAME = "anilans029"
 SRC_REPO = "src"
-LIST_OF_REQUIREMENTS = []
+REQUIREMENTS_FILE_NAME = 'requirements.txt'
 
+def get_requirements_list()->List[str]:
+    """
+    The get_requirements_list function returns a list of all the packages in the requirements file.
+    :return: A list of strings that contain the contents of the requirements
+    :author: anil
+    """
+  
+    with open(REQUIREMENTS_FILE_NAME,"r") as requriemets:
+        return requriemets.readlines().remove("-e .")
 
 setup(
     name=SRC_REPO,
@@ -19,8 +29,8 @@ setup(
     long_description_content_type="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
     author_email="anilsai029@gmail.com",
-    packages=[SRC_REPO],
+    packages= find_packages(),
     license="MIT",
     python_requires=">=3.6",
-    install_requires=LIST_OF_REQUIREMENTS
+    install_requires=get_requirements_list()
 )
